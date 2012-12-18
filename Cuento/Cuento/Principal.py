@@ -13,15 +13,23 @@ class Principal():
         pygame.display.set_caption("Historia")
         
     def iniciarCuento(self):
+        canal = pygame.mixer.Channel(2)
+        
         sonido = pygame.mixer.Sound("parte00.wav")
-        sonido.play()
+        sonido2 = pygame.mixer.Sound("parte00 Seleccion.wav")
+        sonido3 = pygame.mixer.Sound("parte01 Seleccion.wav")
+        canal.queue(sonido)
+        canal.queue(sonido2)
+        sonido3.play()
         entrada = self.capturarEntrada()
-        self.eleccionAcontecimiento(entrada, sonido)
+        self.eleccionAcontecimiento(entrada, canal)
     
-    def eleccionAcontecimiento(self,entrada,sonido):
+    def eleccionAcontecimiento(self,entrada,canal):
         if(entrada==1):
-            sonido.stop()
-            sonido1 = pygame.mixer.Sound("parte00.wav")
+            s = canal.get_sound()#s es el sonido que se esta reproduciendo
+            if s != None:
+               s.stop()#se detiene el sonido
+            sonido1 = pygame.mixer.Sound("parte01.wav")
             sonido1.play()
     
     def capturarEntrada(self):
