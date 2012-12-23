@@ -20,7 +20,27 @@ class Principal():
         canal.queue(sonido)
         canal.queue(opcion1)
         self.proceso_de_eleccion(canal)
-
+    
+	def proceso_de_eleccion(self,canal):   
+        if self.eleccionAcontecimiento("atajo.wav","rodear_la_montana.wav","opcion_atajo.wav","opcion_rodear_montana.wav",canal)==1:
+            #ATAJO
+            if self.eleccionAcontecimiento("rodear_la_montana.wav","investigar_de_donde_vino_el_sonido.wav","opcion_rodear_montana.wav","opcion_de_investigar_de_donde_vino_el_sonido.wav",canal)==1:
+                #RODEAR MONTANA
+                self.eleccionAcontecimiento("cruza_el_rio.wav","atraviesa_el_puente.wav","opcion_rodear_montana.wav","opcion_de_investigar_de_donde_vino_el_sonido.wav",canal)
+            else :
+                #INVESTIGAR DE DONDE VINO EL SONIDO
+                if self.eleccionAcontecimiento("entrar_a_la_nave.wav","salir_huyendo.wav","opciones_de_entrar_a_la_nave.wav","opciones_de_salir_huyendo.wav",canal)==1:
+                    #ENTRAR A LA NAVE
+                    if self.eleccionAcontecimiento("huir.wav","quedarse_acostado.wav","opciones_de_huir.wav","opciones_de_quedarse_acostado.wav",canal)==1:
+                        #HUIR
+                        self.eleccionAcontecimiento("letrero_naranja.wav","letrero_verde.wav","no existe opciones","no existe opciones",canal)        
+                    #FALTAAAAAAAAAAAAAAAAAAAA QUEDARSE ACOSTADO
+                else:
+                    #SALIR HUYENDO
+                    self.eleccionAcontecimiento("atravesar_el_pantano.wav","subir_la_escalera.wav","no existe opciones","no existe opciones",canal)            
+        else :
+            #RODEAR MONTANA
+            self.eleccionAcontecimiento("cruza_el_rio.wav","atraviesa_el_puente.wav","no existe opciones","no existe opciones",canal)
     
     
     def eleccionAcontecimiento(self,titulo1,titulo2,opcion_acontesimiento1,opcion_acontesimiento2,canal):
