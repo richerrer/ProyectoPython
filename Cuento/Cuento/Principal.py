@@ -29,21 +29,25 @@ class Principal():
                 self.eleccionAcontecimiento("cruza_el_rio.wav","atraviesa_el_puente.wav","opcion_rodear_montana.wav","opcion_de_investigar_de_donde_vino_el_sonido.wav",canal)
             else :
                 #INVESTIGAR DE DONDE VINO EL SONIDO
-                if self.eleccionAcontecimiento("entrar_a_la_nave.wav","salir_huyendo.wav","opciones_de_entrar_a_la_nave.wav","opciones_de_salir_huyendo.wav",canal)==1:
-                    #ENTRAR A LA NAVE
-                    if self.eleccionAcontecimiento("huir.wav","quedarse_acostado.wav","opciones_de_huir.wav","opciones_de_quedarse_acostado.wav",canal)==1:
-                        #HUIR
-                        self.eleccionAcontecimiento("letrero_naranja.wav","letrero_verde.wav","no existe opciones","no existe opciones",canal)        
-                    else:
-                        #QUEDARSE ACOSTADO
-                        self.eleccionAcontecimiento("golpear_al_alien.wav","letrero_verde.wav","no existe opciones","no existe opciones",canal)        
-                else:
-                    #SALIR HUYENDO
-                    self.eleccionAcontecimiento("atravesar_el_pantano.wav","subir_la_escalera.wav","no existe opciones","no existe opciones",canal)            
+                self.ramas_de_conclusion(canal)
         else :
             #RODEAR MONTANA
             self.eleccionAcontecimiento("cruza_el_rio.wav","atraviesa_el_puente.wav","no existe opciones","no existe opciones",canal)
     
+    
+    def ramas_de_conclusion(self,canal):
+        if self.eleccionAcontecimiento("entrar_a_la_nave.wav","salir_huyendo.wav","opciones_de_entrar_a_la_nave.wav","opciones_de_salir_huyendo.wav",canal)==1:
+            #ENTRAR A LA NAVE
+            if self.eleccionAcontecimiento("huir.wav","quedarse_acostado.wav","opciones_de_huir.wav","opciones_de_quedarse_acostado.wav",canal)==1:
+                #HUIR
+                self.eleccionAcontecimiento("letrero_naranja.wav","letrero_verde.wav","no existe opciones","no existe opciones",canal)        
+            else:
+                #QUEDARSE ACOSTADO
+                self.eleccionAcontecimiento("golpear_al_alien.wav","letrero_verde.wav","no existe opciones","no existe opciones",canal)        
+        else:
+            #SALIR HUYENDO
+            self.eleccionAcontecimiento("atravesar_el_pantano.wav","subir_la_escalera.wav","no existe opciones","no existe opciones",canal)            
+        
     
     def eleccionAcontecimiento(self,titulo1,titulo2,opcion_acontesimiento1,opcion_acontesimiento2,canal):
         verificador = False
